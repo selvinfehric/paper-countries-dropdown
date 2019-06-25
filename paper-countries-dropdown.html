@@ -430,7 +430,6 @@ If you want to save it in bower.json file, remember to add flag --save
           const selectedItem = e.currentTarget;
           const index = Number(suggestionsMenu.indexOf(selectedItem));
           suggestionsMenu.select(index);
-          this.focus();
         }
       },
 
@@ -508,7 +507,6 @@ If you want to save it in bower.json file, remember to add flag --save
       _searchCountries: function (query, showAll = false) {
         if (query == '' && !showAll) {
           this.set('_suggestions', []);
-          this.country = {};
           this._updateSuggestion();
           return;
         }
@@ -652,7 +650,7 @@ If you want to save it in bower.json file, remember to add flag --save
       },
 
       validate: function () {
-        if (!this._selected && this._suggestions.length < 1 && this.$.input.value == "" && this.required) {
+        if (!this._selected && this.required) {
           this.focus();
           this.country = {};
           this._selected = false;
